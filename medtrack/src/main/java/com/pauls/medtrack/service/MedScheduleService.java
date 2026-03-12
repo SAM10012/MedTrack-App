@@ -10,11 +10,11 @@ public interface MedScheduleService {
 
     void addNewMedSchedule(MedSchedule medSchedule);
 
-//    void deleteMedSchedule(long id);
-//
-//    MedSchedule getMedScheduleById(long id);
-//
+    void deleteMedScheduleById(long id);
+
+    MedSchedule getMedScheduleById(long id);
+
 //    List<MedSchedule> findMedScheduleByUser(String userName);
-//
+
     List<MedSchedule> getAllSchedules();
 }
