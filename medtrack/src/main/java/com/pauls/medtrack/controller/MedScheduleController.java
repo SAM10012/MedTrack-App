@@ -1,6 +1,7 @@
 package com.pauls.medtrack.controller;
 
 import com.pauls.medtrack.model.MedSchedule;
+import com.pauls.medtrack.service.MedIntakeService;
 import com.pauls.medtrack.service.MedScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class MedScheduleController {
 
     @Autowired
     private MedScheduleService medScheduleService;
+
+    @Autowired
+    private MedIntakeService medIntakeService;
 
     @GetMapping("/")
     public String viewHomePage()
@@ -60,4 +64,6 @@ public class MedScheduleController {
         medScheduleService.deleteMedScheduleById(id);
         return "redirect:/";
     }
+
+
 }

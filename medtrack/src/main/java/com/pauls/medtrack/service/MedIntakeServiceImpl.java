@@ -90,4 +90,11 @@ public class MedIntakeServiceImpl implements MedIntakeService{
 
         medIntakeRepository.save(input);
     }
+
+
+    @Override
+    public List<MedIntakeDetails> getAllMedIntakeLogs()
+    {
+        return medIntakeRepository.findAll();
+    }
 }

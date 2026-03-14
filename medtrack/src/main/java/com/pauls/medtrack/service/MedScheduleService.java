@@ -1,5 +1,6 @@
 package com.pauls.medtrack.service;
 
+import com.pauls.medtrack.model.MedIntakeDetails;
 import com.pauls.medtrack.model.MedSchedule;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public interface MedScheduleService {
 //    List<MedSchedule> findMedScheduleByUser(String userName);
 
     List<MedSchedule> getAllSchedules();
+
+
 
 
 }

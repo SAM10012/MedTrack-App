@@ -1,6 +1,8 @@
 package com.pauls.medtrack.service;
 
+import com.pauls.medtrack.model.MedIntakeDetails;
 import com.pauls.medtrack.model.MedSchedule;
+import com.pauls.medtrack.repository.MedIntakeRepository;
 import com.pauls.medtrack.repository.MedScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class MedScheduleServiceImpl implements MedScheduleService{
 
     @Autowired
     private MedScheduleRepository medScheduleRepository;
+
+    @Autowired
+    private MedIntakeRepository medIntakeRepository;
 
     @Override
     public void addNewMedSchedule(MedSchedule medSchedule) {
@@ -47,6 +52,7 @@ public class MedScheduleServiceImpl implements MedScheduleService{
     public List<MedSchedule> getAllSchedules() {
         return medScheduleRepository.findAll();
     }
+
 
 
 }

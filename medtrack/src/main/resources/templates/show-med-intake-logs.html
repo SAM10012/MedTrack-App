@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>MedTrack</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div  class = "container my-2">
+
+    <h1>Medicine Intake Logs</h1>
+    <table border="1" class = "table table-striped table-responsive-md" >
+        <thead >
+        <tr>
+            <th>User Name</th>
+            <th>Med Name</th>
+            <th>Intake Date</th>
+            <th>Time Slot</th>
+            <th>Intake Status</th>
+            <th>Intake Timestamp</th>
+
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each = "medIntakeInfo : ${allMedIntakeLogs}">
+            <td th:text = "${medIntakeInfo.userName}"> </td>
+            <td th:text = "${medIntakeInfo.medName}"> </td>
+            <td th:text = "${medIntakeInfo.intakeDate}"> </td>
+            <td th:text = "${medIntakeInfo.timeSlot}"> </td>
+            <td th:text = "${medIntakeInfo.intakeStatus}"></td>
+            <td th:text = "${medIntakeInfo.intakeTimestamp}"></td>
+
+        </tr>
+        </tbody>
+    </table></div>
+</body>
+</html>

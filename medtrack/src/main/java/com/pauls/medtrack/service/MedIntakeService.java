@@ -3,6 +3,7 @@ package com.pauls.medtrack.service;
 import com.pauls.medtrack.dto.DailyIntakeDTO;
 import com.pauls.medtrack.dto.UserInputDTO;
 import com.pauls.medtrack.dto.UserNameDTO;
+import com.pauls.medtrack.model.MedIntakeDetails;
 import com.pauls.medtrack.model.MedSchedule;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
@@ -17,4 +18,6 @@ public interface MedIntakeService {
     public DailyIntakeDTO getDailyIntake(String userName);
 
     public void saveUserInput(UserInputDTO userInput);
+
+    List<MedIntakeDetails> getAllMedIntakeLogs();
 }
