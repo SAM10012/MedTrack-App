@@ -1,6 +1,7 @@
 package com.pauls.medtrack.service;
 
 import com.pauls.medtrack.dto.DailyIntakeDTO;
+import com.pauls.medtrack.dto.UserInputDTO;
 import com.pauls.medtrack.dto.UserNameDTO;
 import com.pauls.medtrack.model.MedSchedule;
 import org.springframework.cglib.core.Local;
@@ -14,4 +15,6 @@ public interface MedIntakeService {
     public List<UserNameDTO> getAllUsers();
 
     public DailyIntakeDTO getDailyIntake(String userName);
+
+    public void saveUserInput(UserInputDTO userInput);
 }

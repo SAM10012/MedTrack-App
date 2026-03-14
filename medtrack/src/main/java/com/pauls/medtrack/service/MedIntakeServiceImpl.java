@@ -1,9 +1,7 @@
 package com.pauls.medtrack.service;
 
-import com.pauls.medtrack.dto.DailyIntakeDTO;
-import com.pauls.medtrack.dto.MedStatusDTO;
-import com.pauls.medtrack.dto.TimeSlotDTO;
-import com.pauls.medtrack.dto.UserNameDTO;
+import com.pauls.medtrack.dto.*;
+import com.pauls.medtrack.model.MedIntakeDetails;
 import com.pauls.medtrack.model.MedSchedule;
 import com.pauls.medtrack.model.TimeSlot;
 import com.pauls.medtrack.repository.MedIntakeRepository;
@@ -12,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -74,5 +73,21 @@ public class MedIntakeServiceImpl implements MedIntakeService{
         }
 
         return new DailyIntakeDTO(userName, today, slots);
+    }
+
+    @Override
+    public void saveUserInput(UserInputDTO userInput) {
+
+        MedIntakeDetails input = new MedIntakeDetails();
+
+        input.setUserName(userInput.getUserName());
+        input.setMedName(userInput.getMedName());
+        input.setTimeSlot(userInput.getTimeSlot());
+        input.setIntakeStatus(userInput.getStatus());
+
+        input.setIntakeDate(LocalDate.now());
+        input.setIntakeTimestamp((LocalDateTime.now()));
+
+        medIntakeRepository.save(input);
     }
 }
