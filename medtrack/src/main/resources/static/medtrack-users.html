@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medtrack</title>
+
     <style>
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #FDFDFD; /* off-white background */
+            background-color: #FDFDFD;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            font-weight: bold; /* all text bold */
+            font-weight: bold;
         }
 
         h1, h2 {
             color: #4B0082;
             text-align: center;
-            font-weight: bold;
         }
 
         #users-container, #meds-container {
@@ -39,45 +40,37 @@
             padding: 12px;
             font-size: 1rem;
             cursor: pointer;
-            transition: transform 0.1s, box-shadow 0.1s;
             width: 100%;
             text-align: center;
-            font-weight: bold;
         }
 
-        /* User buttons - light purple */
         .user-btn {
             background-color: #E0BBFF;
             color: #4B0082;
         }
-        .user-btn:hover { transform: scale(1.05); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
-        /* Timeslot buttons - light purple */
-        .timeslot-btn { background-color: #E0BBFF; color: #4B0082; }
+        .timeslot-btn {
+            background-color: #E0BBFF;
+            color: #4B0082;
+        }
 
         .med-container {
             display: flex;
             flex-direction: column;
             width: 100%;
-            transition: border 0.2s;
             border-radius: 12px;
         }
 
-        /* Med buttons - yellow */
         .med-btn {
             background-color: #FFFF66;
             color: #000;
-            display: block;
             border-radius: 12px 12px 0 0;
-            margin: 0;
-            font-weight: bold;
         }
 
         .status-container {
             display: none;
             flex-direction: row;
             width: 100%;
-            margin: 0;
         }
 
         .status-btn {
@@ -87,16 +80,32 @@
             font-size: 0.9rem;
             cursor: pointer;
             border: none;
-            font-weight: bold;
         }
 
         .taken { background-color: #90EE90; border-radius: 0 0 0 12px; }
         .not-taken { background-color: #FF7F7F; border-radius: 0 0 12px 0; }
 
-        .meds-list { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+        .greyed {
+            background-color: #CCCCCC !important;
+            cursor: not-allowed;
+        }
+
+        .meds-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .undo-msg{
+            font-size:12px;
+            text-align:center;
+            cursor:pointer;
+        }
 
     </style>
 </head>
+
 <body>
 
 <h1>Welcome to Medtrack</h1>
@@ -105,106 +114,179 @@
 <div id="meds-container"></div>
 
 <script>
-    // Load Users
+
     fetch('http://localhost:8080/medtrack/users')
     .then(res => res.json())
     .then(users => {
+
         const container = document.getElementById('users-container');
+
         users.forEach(user => {
+
             const btn = document.createElement('button');
             btn.classList.add('user-btn');
             btn.textContent = user.userName;
+
             btn.addEventListener('click', () => loadUserMeds(user.userName));
+
             container.appendChild(btn);
+
         });
-    })
-    .catch(err => console.error('Error fetching users:', err));
 
-    // Load Meds for selected user
+    });
+
     function loadUserMeds(userName) {
-        fetch(`http://localhost:8080/medtrack/intake/${userName}`)
-        .then(res => res.json())
-        .then(dailyIntake => {
-            const container = document.getElementById('meds-container');
-            container.innerHTML = '';
 
-            const header = document.createElement('h2');
-            header.textContent = `Hi ${dailyIntake.userName}, below are the meds for ${dailyIntake.date}`;
-            container.appendChild(header);
+    fetch(`http://localhost:8080/medtrack/intake/${userName}`)
+    .then(res => res.json())
+    .then(dailyIntake => {
 
-            if(!dailyIntake.timeSlots || dailyIntake.timeSlots.length === 0) {
-                const msg = document.createElement('p');
-                msg.textContent = dailyIntake.message || 'No meds scheduled today!';
-                container.appendChild(msg);
-                return;
-            }
+    const container = document.getElementById('meds-container');
+    container.innerHTML = '';
 
-            dailyIntake.timeSlots.forEach(slot => {
-                const slotBtn = document.createElement('button');
-                slotBtn.classList.add('timeslot-btn');
-                slotBtn.textContent = slot.timeSlot ? slot.timeSlot.toString() : 'Unknown Slot';
-                container.appendChild(slotBtn);
+    const header = document.createElement('h2');
+    const formattedDate = new Date(dailyIntake.date).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+});
 
-                const medsDiv = document.createElement('div');
-                medsDiv.classList.add('meds-list');
-                medsDiv.style.display = 'none';
-                container.appendChild(medsDiv);
+header.textContent = `Hi ${dailyIntake.userName}, below are your Meds for ${formattedDate}`;
 
-                slotBtn.addEventListener('click', () => {
-                    medsDiv.style.display = medsDiv.style.display === 'none' ? 'flex' : 'none';
-                });
+        container.appendChild(header);
 
-                slot.medicines.forEach(med => {
-                    const medContainer = document.createElement('div');
-                    medContainer.classList.add('med-container');
+    dailyIntake.timeSlots.forEach(slot => {
 
-                    const medBtn = document.createElement('button');
-                    medBtn.classList.add('med-btn');
-                    medBtn.textContent = med.medName;
-                    medContainer.appendChild(medBtn);
+    const slotBtn = document.createElement('button');
+    slotBtn.classList.add('timeslot-btn');
+    slotBtn.textContent = slot.timeSlot;
 
-                    const statusContainer = document.createElement('div');
-                    statusContainer.classList.add('status-container');
+    container.appendChild(slotBtn);
 
-                    const takenBtn = document.createElement('button');
-                    takenBtn.classList.add('status-btn', 'taken');
-                    takenBtn.textContent = 'Taken';
-                    takenBtn.addEventListener('click', () => saveMedStatus(dailyIntake.userName, med.medName, slot.timeSlot, 'Taken'));
+    const medsDiv = document.createElement('div');
+    medsDiv.classList.add('meds-list');
+    medsDiv.style.display = 'none';
 
-                    const notTakenBtn = document.createElement('button');
-                    notTakenBtn.classList.add('status-btn', 'not-taken');
-                    notTakenBtn.textContent = 'Not_Taken';
-                    notTakenBtn.addEventListener('click', () => saveMedStatus(dailyIntake.userName, med.medName, slot.timeSlot, 'Not_Taken'));
+    container.appendChild(medsDiv);
 
-                    statusContainer.appendChild(takenBtn);
-                    statusContainer.appendChild(notTakenBtn);
-                    medContainer.appendChild(statusContainer);
+    slotBtn.addEventListener('click', () => {
+    medsDiv.style.display =
+    medsDiv.style.display === 'none' ? 'flex' : 'none';
+    });
 
-                    // Toggle status + black border
-                    medBtn.addEventListener('click', () => {
-                        const isVisible = statusContainer.style.display !== 'none';
-                        statusContainer.style.display = isVisible ? 'none' : 'flex';
-                        medContainer.style.border = isVisible ? 'none' : '1px solid black';
-                    });
+    slot.medicines.forEach(med => {
 
-                    medsDiv.appendChild(medContainer);
-                });
-            });
-        })
-        .catch(err => console.error('Error fetching daily intake:', err));
+    const medContainer = document.createElement('div');
+    medContainer.classList.add('med-container');
+
+    const medBtn = document.createElement('button');
+    medBtn.classList.add('med-btn');
+    medBtn.textContent = med.medName;
+
+    medContainer.appendChild(medBtn);
+
+    const statusContainer = document.createElement('div');
+    statusContainer.classList.add('status-container');
+
+    const takenBtn = document.createElement('button');
+    takenBtn.classList.add('status-btn','taken');
+    takenBtn.textContent='Taken';
+
+    const notTakenBtn = document.createElement('button');
+    notTakenBtn.classList.add('status-btn','not-taken');
+    notTakenBtn.textContent='Not Taken';
+
+    statusContainer.appendChild(takenBtn);
+    statusContainer.appendChild(notTakenBtn);
+
+    medContainer.appendChild(statusContainer);
+
+    medBtn.addEventListener('click', () => {
+
+    const isVisible = statusContainer.style.display !== 'none';
+
+    statusContainer.style.display = isVisible ? 'none' : 'flex';
+    medContainer.style.border = isVisible ? 'none' : '1px solid black';
+
+    });
+
+    takenBtn.addEventListener('click', () =>
+    startUndoTimer(
+    dailyIntake.userName,
+    med.medName,
+    slot.timeSlot,
+    'Taken',
+    takenBtn,
+    notTakenBtn,
+    medContainer
+    )
+    );
+
+    notTakenBtn.addEventListener('click', () =>
+    startUndoTimer(
+    dailyIntake.userName,
+    med.medName,
+    slot.timeSlot,
+    'Not_Taken',
+    takenBtn,
+    notTakenBtn,
+    medContainer
+    )
+    );
+
+    medsDiv.appendChild(medContainer);
+
+    });
+
+    });
+
+    });
     }
 
-    // Save med status
-    function saveMedStatus(userName, medName, timeSlot, status) {
-        fetch('http://localhost:8080/medtrack/intake/save', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({userName, medName, timeSlot, status})
-        })
-        .then(res => res.text())
-        .then(msg => alert(msg))
-        .catch(err => console.error('Error saving med status:', err));
+    function startUndoTimer(userName,medName,timeSlot,status,takenBtn,notTakenBtn,medContainer){
+
+    if(takenBtn.disabled || notTakenBtn.disabled) return;
+
+    takenBtn.classList.add("greyed");
+    notTakenBtn.classList.add("greyed");
+
+    takenBtn.disabled=true;
+    notTakenBtn.disabled=true;
+
+    const msg=document.createElement('div');
+    msg.className='undo-msg';
+    msg.textContent="Undo within 3 seconds";
+
+    medContainer.appendChild(msg);
+
+    const timer=setTimeout(()=>{
+
+    fetch('http://localhost:8080/medtrack/intake/save',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({userName,medName,timeSlot,status})
+    });
+
+    msg.remove();
+
+    },3000);
+
+    msg.onclick=()=>{
+
+    clearTimeout(timer);
+
+    takenBtn.disabled=false;
+    notTakenBtn.disabled=false;
+
+    takenBtn.classList.remove("greyed");
+    notTakenBtn.classList.remove("greyed");
+
+    msg.remove();
+
+    };
+
     }
+
 </script>
 
 </body>
