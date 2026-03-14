@@ -9,6 +9,6 @@ public enum TimeSlot {
     After_Lunch,
     Before_Dinner,
     After_Dinner,
-    Before_Night_SLeep
+    Before_Night_Sleep
 
 }
