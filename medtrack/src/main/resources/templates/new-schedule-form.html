@@ -82,10 +82,12 @@
                class="form-control mb-4">
 
         <input type="date"
+               id="startDate"
                th:field="*{startDate}"
                class="form-control mb-4">
 
         <input type="date"
+               id="endDate"
                th:field="*{endDate}"
                class="form-control mb-4">
 
@@ -111,6 +113,19 @@
     </form>
 
 </div>
+
+<script>
+
+    /* set today's date as minimum start date */
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("startDate").setAttribute("min", today);
+
+    /* ensure end date cannot be before start date */
+    document.getElementById("startDate").addEventListener("change", function(){
+        document.getElementById("endDate").setAttribute("min", this.value);
+    });
+
+</script>
 
 </body>
 </html>
