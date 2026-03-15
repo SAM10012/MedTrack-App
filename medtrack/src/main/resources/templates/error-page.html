@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Error</title>
+
+    <style>
+
+        body{
+        font-family:Arial;
+        background:#F8F6FB;
+        text-align:center;
+        padding-top:100px;
+        font-weight:bold;
+        }
+
+        h1{
+        color:#6A0DAD;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Something went wrong!</h1>
+
+<p th:text="${errorMessage}"></p>
+
+<a href="/medtrack-users.html">Back to Home</a>
+
+</body>
+</html>
