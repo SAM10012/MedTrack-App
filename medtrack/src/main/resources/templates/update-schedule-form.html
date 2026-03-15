@@ -83,9 +83,18 @@
                class="form-control mb-4"
                placeholder="Name of Medicine">
 
+        <!-- SHOW DATE IF START DATE NOT PASSED -->
         <input type="date"
+               th:if="${medSchedule.startDate == null or !medSchedule.startDate.isBefore(today)}"
                th:field="*{startDate}"
                class="form-control mb-4">
+
+        <!-- SHOW MESSAGE IF START DATE PASSED -->
+        <input type="text"
+               th:if="${medSchedule.startDate != null and medSchedule.startDate.isBefore(today)}"
+               value="Start Date Passed"
+               class="form-control mb-4"
+               readonly>
 
         <input type="date"
                th:field="*{endDate}"

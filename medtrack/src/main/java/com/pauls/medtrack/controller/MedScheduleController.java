@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -55,6 +56,7 @@ public class MedScheduleController {
     {
         MedSchedule medSchedule = medScheduleService.getMedScheduleById(id);
         model.addAttribute("medSchedule",medSchedule);
+        model.addAttribute("today", LocalDate.now());
         return "update-schedule-form";
     }
 
