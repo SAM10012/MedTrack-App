@@ -96,9 +96,10 @@
                    class="btn update-btn">
                     Update
                 </a>
-
+                
                 <a th:href="@{/delete-schedule/{id}(id=${scheduleInfo.scheduleId})}"
-                   class="btn delete-btn">
+                   class="btn delete-btn"
+                   onclick="return confirm('Are you sure you want to delete this schedule?')">
                     Delete
                 </a>
 
