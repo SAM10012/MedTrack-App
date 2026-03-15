@@ -5,17 +5,71 @@
     <title>MedTrack</title>
 
     <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <style>
+
+        body{
+            background-color:#F8F6FB;
+            font-weight:bold;
+        }
+
+        /* Main heading */
+        h1{
+            color:#6A0DAD;
+            font-weight:bold;
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        /* Table center alignment */
+        table{
+            text-align:center;
+        }
+
+        /* Column headings */
+        th{
+            color:#6A0DAD;
+            font-weight:bold;
+            text-align:center;
+        }
+
+        /* Table cells */
+        td{
+            text-align:center;
+            vertical-align:middle;
+        }
+
+        /* Update button */
+        .update-btn{
+            background-color:#B8F5B8;   /* light green */
+            color:black;
+            font-weight:bold;
+            border:none;
+            margin-right:5px;
+        }
+
+        /* Delete button */
+        .delete-btn{
+            background-color:#FFB6B6;   /* light red */
+            color:black;
+            font-weight:bold;
+            border:none;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<div  class = "container my-2">
+<div class="container my-4">
 
     <h1>Medicine Schedules</h1>
-    <table border="1" class = "table table-striped table-responsive-md" >
-        <thead >
+
+    <table border="1" class="table table-striped table-responsive-md">
+
+        <thead>
         <tr>
             <th>User Name</th>
             <th>Med Name</th>
@@ -24,20 +78,39 @@
             <th>Time Slot</th>
             <th>Actions</th>
         </tr>
-
         </thead>
+
         <tbody>
-        <tr th:each = "scheduleInfo : ${allMedSchedules}">
-            <td th:text = "${scheduleInfo.userName}"> </td>
-            <td th:text = "${scheduleInfo.medName}"> </td>
-            <td th:text = "${scheduleInfo.startDate}"> </td>
-            <td th:text = "${scheduleInfo.endDate}"> </td>
-            <td th:text = "${scheduleInfo.timeSlot}"></td>
-            <td> <a th:href = "@{/update-schedule/{id}(id=${scheduleInfo.scheduleId})}" class = "btn btn-primary">Update</a>
-                <a th:href = "@{/delete-schedule/{id}(id=${scheduleInfo.scheduleId})}" class = "btn btn-danger">Delete</a></td>
+
+        <tr th:each="scheduleInfo : ${allMedSchedules}">
+
+            <td th:text="${scheduleInfo.userName}"></td>
+            <td th:text="${scheduleInfo.medName}"></td>
+            <td th:text="${scheduleInfo.startDate}"></td>
+            <td th:text="${scheduleInfo.endDate}"></td>
+            <td th:text="${scheduleInfo.timeSlot}"></td>
+
+            <td>
+
+                <a th:href="@{/update-schedule/{id}(id=${scheduleInfo.scheduleId})}"
+                   class="btn update-btn">
+                    Update
+                </a>
+
+                <a th:href="@{/delete-schedule/{id}(id=${scheduleInfo.scheduleId})}"
+                   class="btn delete-btn">
+                    Delete
+                </a>
+
+            </td>
 
         </tr>
+
         </tbody>
-    </table></div>
+
+    </table>
+
+</div>
+
 </body>
 </html>

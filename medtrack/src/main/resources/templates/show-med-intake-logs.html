@@ -5,39 +5,82 @@
     <title>MedTrack</title>
 
     <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <style>
+
+        body{
+            background-color:#F8F6FB;
+            font-weight:bold;
+        }
+
+        /* Main heading */
+        h1{
+            color:#6A0DAD;
+            font-weight:bold;
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        /* Table alignment */
+        table{
+            text-align:center;
+        }
+
+        /* Column headings */
+        th{
+            color:#6A0DAD;
+            font-weight:bold;
+            text-align:center;
+        }
+
+        /* Table cells */
+        td{
+            text-align:center;
+            vertical-align:middle;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<div  class = "container my-2">
+<div class="container my-4">
 
     <h1>Medicine Intake Logs</h1>
-    <table border="1" class = "table table-striped table-responsive-md" >
-        <thead >
+
+    <table border="1" class="table table-striped table-responsive-md">
+
+        <thead>
         <tr>
             <th>User Name</th>
             <th>Med Name</th>
             <th>Intake Date</th>
             <th>Time Slot</th>
             <th>Intake Status</th>
-            <th>Intake Timestamp</th>
-
+            <th>Intake Time</th>
         </tr>
-
         </thead>
+
         <tbody>
-        <tr th:each = "medIntakeInfo : ${allMedIntakeLogs}">
-            <td th:text = "${medIntakeInfo.userName}"> </td>
-            <td th:text = "${medIntakeInfo.medName}"> </td>
-            <td th:text = "${medIntakeInfo.intakeDate}"> </td>
-            <td th:text = "${medIntakeInfo.timeSlot}"> </td>
-            <td th:text = "${medIntakeInfo.intakeStatus}"></td>
-            <td th:text = "${medIntakeInfo.intakeTimestamp}"></td>
+
+        <tr th:each="medIntakeInfo : ${allMedIntakeLogs}">
+
+            <td th:text="${medIntakeInfo.userName}"></td>
+            <td th:text="${medIntakeInfo.medName}"></td>
+            <td th:text="${medIntakeInfo.intakeDate}"></td>
+            <td th:text="${medIntakeInfo.timeSlot}"></td>
+            <td th:text="${medIntakeInfo.intakeStatus}"></td>
+            <td th:text="${#temporals.format(medIntakeInfo.intakeTimestamp,'hh:mm a')}"></td>
 
         </tr>
+
         </tbody>
-    </table></div>
+
+    </table>
+
+</div>
+
 </body>
 </html>
