@@ -162,10 +162,10 @@ http://localhost:8080
 
 ### 7. Application Flow
 
-1. Open the homepage - medtrack-users.html
+1. Open the homepage - http://localhost:8080/medtrack-users.html
 2. Select a user to view daily medicines
 3. Mark medicines as **Taken / Not Taken**
-4. Admin can manage schedules from the schedule management homepage
+4. Caregivers can manage medicine schedules from another homepage - http://localhost:8080/
 
 ---
 
