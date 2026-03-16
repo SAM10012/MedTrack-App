@@ -1,4 +1,4 @@
-**MedTrack – Medicine Intake Tracking System**
+# **MedTrack – Medicine Intake Tracking System**
 
 A **Spring Boot based medicine intake tracking application** that helps users track daily medication intake based on predefined medicine schedules.
 
@@ -54,10 +54,6 @@ The system allows caregivers or family members to create medication schedules an
 
 **# Project Architecture**
 
-```
-
-
----
 
 # Database Tables
 
