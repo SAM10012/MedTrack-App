@@ -36,10 +36,11 @@ The system allows caregivers or family members to create medication schedules an
 # 📦 Key Features
 
 - CRUD Operations for Medicine Schedules
+- Does not allow Start Date Update once that date has passed. Checks End Date is after Start Date.
 - For each user, automatically determines medicines scheduled **for the current day**
 - Group medicines by **time slots**
 - Record medicine intake (**Taken / Not Taken**)
-- Undo option before saving intake status
+- Undo option before saving med intake status
 - Maintain **medicine intake history logs**
 - Mobile friendly user interface
 - Global exception handling
