@@ -35,7 +35,7 @@ The system allows caregivers or family members to create medication schedules an
 
 # 📦 Key Features
 
-- Caregiver's Homepage for Med Schedule Management - CRUD Operations for Medicine Schedules
+- CRUD Operations for Medicine Schedules
 - For each user, automatically determines medicines scheduled **for the current day**
 - Group medicines by **time slots**
 - Record medicine intake (**Taken / Not Taken**)
