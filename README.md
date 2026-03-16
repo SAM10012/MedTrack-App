@@ -35,7 +35,7 @@ The system allows caregivers or family members to create medication schedules an
 
 # 📦 Key Features
 
-- Admin dashboard for schedule management - CRUD Operations for Med Schedules
+- Caregiver's Homepage for Med Schedule Management - CRUD Operations for Medicine Schedules
 - For each user, automatically determines medicines scheduled **for the current day**
 - Group medicines by **time slots**
 - Record medicine intake (**Taken / Not Taken**)
@@ -246,8 +246,8 @@ http://localhost:8080
 
 # 👩‍💻 Author
 
-Samadrita Paul  
-Java Backend Developer
+**Samadrita Paul**  
+Java Backend Developer | Spring Boot | REST APIs | MySQL
 
    
 
