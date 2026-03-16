@@ -35,7 +35,7 @@ The system allows caregivers or family members to create medication schedules an
 
 # 📦 Key Features
 
-- CRUD Operations for Medicine Schedules
+- Full CRUD Operations for Medicine Schedule Management
 - Does not allow Start Date Update once that date has passed. Checks End Date is after Start Date.
 - For each user, automatically determines medicines scheduled **for the current day**
 - Group medicines by **time slots**
