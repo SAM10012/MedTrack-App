@@ -50,7 +50,7 @@ The system allows caregivers or family members to create medication schedules an
 
 # 🔗 REST APIs
 
-
+---
 
 ## 🏗️ Project Architecture
 
@@ -71,8 +71,6 @@ Client (Browser / JavaScript / Thymeleaf)
             ▼
            Database
 ```
-
----
 
 ### Controller Layer
 
@@ -130,6 +128,7 @@ Main tables:
 
 These tables store medicine schedules and daily intake records.
 
+---
 
 # 🗄️ Database Tables
 
