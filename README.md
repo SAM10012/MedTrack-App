@@ -1,4 +1,4 @@
-# **MedTrack – Medicine Intake Tracking System**
+# 💊 **MedTrack – Medicine Intake Tracking System**
 
 A **Spring Boot based medicine intake tracking application** that helps users track daily medication intake based on predefined medicine schedules.
 
@@ -8,7 +8,7 @@ The system allows caregivers or family members to create medication schedules an
 
 ---
 
-# Tech Stack
+# 🚀 Tech Stack
 
 **Backend**
 - Java
@@ -33,7 +33,7 @@ The system allows caregivers or family members to create medication schedules an
 
 ---
 
-# Key Features
+# 📦 Key Features
 
 - Admin dashboard for schedule management - CRUD Operations for Med Schedules
 - For each user, automatically determines medicines scheduled **for the current day**
@@ -48,14 +48,90 @@ The system allows caregivers or family members to create medication schedules an
 
 ---
 
-# REST APIs
+# 🔗 REST APIs
 
 
 
-**# Project Architecture**
+## 🏗️ Project Architecture
+
+The application follows a **layered architecture** to separate responsibilities and maintain clean code structure.
+
+```
+Client (Browser / JavaScript / Thymeleaf)
+            │
+            ▼
+        Controller Layer
+            │
+            ▼
+        Service Layer
+            │
+            ▼
+       Repository Layer
+            │
+            ▼
+           Database
+```
+
+---
+
+### Controller Layer
+
+Handles incoming HTTP requests and returns responses or views.
+
+* `MedIntakeController`
+* `MedScheduleController`
+
+Responsibilities:
+
+* Receive API requests
+* Call appropriate service methods
+* Return JSON responses or HTML views
+
+---
+
+### Service Layer
+
+Contains the **business logic** of the application.
+
+* `MedIntakeService`
+* `MedScheduleService`
+* `MedIntakeServiceImpl`
+* `MedScheduleServiceImpl`
+
+Responsibilities:
+
+* Process medicine schedules
+* Determine daily medicines for a user
+* Record medicine intake
+* Coordinate repository operations
+
+---
+
+### Repository Layer
+
+Handles **database interactions** using Spring Data JPA.
+
+Responsibilities:
+
+* Fetch medicine schedules
+* Store intake records
+* Query user medicine data
+
+---
+
+### Database Layer
+
+The application uses **MySQL** for persistent storage.
+
+Main tables:
+
+* `med_schedule`
+* `med_intake_details`
+
+These tables store medicine schedules and daily intake records.
 
 
-# Database Tables
+# 🗄️ Database Tables
 
 **med_schedule**
 
@@ -78,11 +154,11 @@ The system allows caregivers or family members to create medication schedules an
 
 ---
 
-# Screenshots
+# 🖼️ Screenshots
 
 ---
 
-# How to Run
+# 🛠️ How to Run
 
 Follow the steps below to run the MedTrack application locally.
 
@@ -169,7 +245,7 @@ http://localhost:8080
 
 ---
 
-# Author
+# 👩‍💻 Author
 
 Samadrita Paul  
 Java Backend Developer
