@@ -66,6 +66,6 @@ public class MedScheduleController {
         medScheduleService.deleteMedScheduleById(id);
         return "redirect:/";
     }
-    
+
 
 }
