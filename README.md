@@ -50,7 +50,102 @@ The system allows caregivers or family members to create medication schedules an
 ---
 
 # 🔗 REST APIs
+---
+### 1. Get All Users
 
+GET /medtrack/users
+
+Returns all users with medicine schedules.
+
+**Response Example**
+```json
+[
+  { "userName": "Alice" },
+  { "userName": "Bob" }
+]
+
+Controller Method
+
+@GetMapping("/medtrack/users")
+public List<UserNameDTO> usersHomePage()
+
+### 2. Get Daily Medicine Intake Schedule
+
+GET /medtrack/intake/{user}
+
+Returns medicines scheduled for the current day, grouped by time slot.
+
+Example Request
+
+GET /medtrack/intake/Alice
+
+Response Example
+
+{
+  "userName": "Alice",
+  "date": "2026-03-30",
+  "timeSlots": [
+    {
+      "timeSlot": "After_Breakfast",
+      "medicines": [
+        { "medName": "Vitamin C", "intakeStatus": null }
+      ]
+    },
+    {
+      "timeSlot": "Before_Dinner",
+      "medicines": [
+        { "medName": "Metformin", "intakeStatus": null }
+      ]
+    }
+  ]
+}
+
+Controller Method
+
+@GetMapping("/medtrack/intake/{user}")
+public DailyIntakeDTO getDailyIntake(@PathVariable String user)
+
+### 3. Record Medicine Intake
+POST /medtrack/intake/save
+
+Request Body Example
+
+{
+  "userName": "Alice",
+  "medName": "Vitamin C",
+  "timeSlot": "After_Breakfast",
+  "status": "Taken"
+}
+
+Response
+
+User Input Recorded
+
+Controller Method
+
+@PostMapping("/medtrack/intake/save")
+public String saveUserInput(@RequestBody UserInputDTO userInput)
+
+### 4. View Medicine Intake Logs (Web)
+GET /med-intake-logs/view
+
+Displays all intake records in a Thymeleaf page.
+
+Controller Method
+
+@GetMapping("/med-intake-logs/view")
+public String viewMedIntakeLogs(Model model)
+
+### 5. CRUD APIs for Medicine Schedule (Web + Backend)
+Operation	Endpoint	Notes
+View Home Page	/	Homepage for caregivers
+Add New Schedule	/schedule/new	Returns HTML form
+Save Schedule	/schedule/save	Handles POST from form
+View All Schedules	/schedules/view	Returns all schedules in web view
+Update Schedule	/update-schedule/{id}	Returns prefilled HTML form
+Delete Schedule	/delete-schedule/{id}	Deletes schedule by ID
+
+Note: Schedule APIs are currently web-based (Thymeleaf), not pure REST.
 ---
 
 ## 🏗️ Project Architecture
