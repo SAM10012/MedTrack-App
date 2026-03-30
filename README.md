@@ -277,17 +277,7 @@ from your IDE.
 
 
 
-### 6. Access the Application
-
-Open a browser and go to:
-
-```
-http://localhost:8080
-```
-
----
-
-### 7. Application Flow
+### 6. Application Flow
 
 1. Open the homepage - http://localhost:8080/medtrack-users.html
 2. Select a user to view daily medicines
