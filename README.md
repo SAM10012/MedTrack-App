@@ -171,7 +171,9 @@ These tables store medicine schedules and daily intake records.
 ---
 
 # 🖼️ Screenshots
-
+---
+1. Homepage for Caregivers
+   ![Homepage](https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Home_Page_For_Caregivers.png)
 ---
 
 # 🛠️ How to Run
