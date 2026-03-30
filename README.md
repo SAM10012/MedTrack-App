@@ -173,7 +173,26 @@ These tables store medicine schedules and daily intake records.
 # 🖼️ Screenshots
 ---
 1. Homepage for Caregivers
-   ![Homepage](https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Home_Page_For_Caregivers.png)
+
+   ![Homepage_for_Caregivers](https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Home_Page_For_Caregivers.png)
+
+2. Add New Med Schedule
+   ![New_Med_Schedule] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Adding_New_Med_Schedule.png)
+3. View Med Schedules
+   ![View_Schedules] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/View_Med_Schedules.png)
+4. Update a Med Schedule
+   ![Update_Schedule] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Update_Med_Schedule.png)
+5. Homepage for Users
+   ![Homepage_for_Users] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Home_Page_for_Users.png)
+6. User List of Meds
+    ![User_List_of_Meds] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/User_List_of_Meds.png)
+7. User Records Med Intake Status
+    ![Record_Intake_Status] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/User_Records_Intake_Status.png)
+8. Med Intake Logs 1
+    ![Intake_Logs_1] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Med_Intake_Logs_1.png)
+9. Med Intake Logs 2
+    ![Intake_Logs_2] (https://github.com/SAM10012/MedTrack-App/blob/da4dcfd5649048a40e2ca12040379ffa5918e7c1/medtrack/screenshots/Med_Intake_Logs_2.png)
+    
 ---
 
 # 🛠️ How to Run
