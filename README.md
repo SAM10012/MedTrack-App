@@ -50,7 +50,7 @@ The system allows caregivers or family members to create medication schedules an
 ---
 
 # 🔗 REST APIs
----
+
 **MedScheduleController**
 
 1. Visit HomePage - @GetMapping("/")
@@ -102,7 +102,7 @@ Responsibilities:
 * Call appropriate service methods
 * Return JSON responses or HTML views
 
----
+
 
 ### Service Layer
 
@@ -120,7 +120,7 @@ Responsibilities:
 * Record medicine intake
 * Coordinate repository operations
 
----
+
 
 ### Repository Layer
 
@@ -132,7 +132,7 @@ Responsibilities:
 * Store intake records
 * Query user medicine data
 
----
+
 
 ### Database Layer
 
@@ -214,7 +214,6 @@ These tables store medicine schedules and daily intake records.
 
 Follow the steps below to run the MedTrack application locally.
 
----
 
 ### 1. Clone the Repository
 
@@ -223,7 +222,7 @@ git clone https://github.com/your-username/medtrack.git
 cd medtrack
 ```
 
----
+
 
 ### 2. Create MySQL Database
 
@@ -233,7 +232,7 @@ Open MySQL and create a database.
 CREATE DATABASE medtrack;
 ```
 
----
+
 
 ### 3. Configure Database Connection
 
@@ -248,7 +247,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 
----
+
 
 ### 4. Build the Project
 
@@ -258,7 +257,7 @@ Use Maven to build the project.
 mvn clean install
 ```
 
----
+
 
 ### 5. Run the Application
 
@@ -276,7 +275,7 @@ MedtrackApplication.java
 
 from your IDE.
 
----
+
 
 ### 6. Access the Application
 
@@ -301,6 +300,8 @@ http://localhost:8080
 
 **Samadrita Paul**  
 Java Backend Developer | Spring Boot | REST APIs | MySQL
+
+---
 
    
 
